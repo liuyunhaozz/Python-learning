@@ -1,8 +1,8 @@
-# [Python] argparse处理多个功能和不同的多参数
+## [Python] argparse处理多个功能和不同的多参数
 
 
 
-## 0. 前情提要
+### 0. 前情提要
 
 我想要使Python脚本能处理多个功能，每个功能都有多个不同的参数，就像git一样:
 
@@ -53,7 +53,7 @@ optional arguments:
 
 ```
 
-## 1. 使用add_subparsers处理多个功能使用多个不同参数
+### 1. 使用add_subparsers处理多个功能使用多个不同参数
 
 ```python
 import argparse
@@ -125,3 +125,28 @@ $ python argparse3.py write --path C:/desktop --encoding utf-8
 Namespace(encoding='utf-8', func=<function handle_write at 0x000001CB2BDF9438>, path='C:/desktop')
 C:/desktop utf-8
 ```
+
+
+
+### 2.**Python arg解析没有参数的命令行标志**
+
+添加一个快速片段执行：
+
+**资料来源：**
+
+```python
+import argparse
+parser = argparse.ArgumentParser(description="Flip a switch by setting a flag")
+parser.add_argument('-w', action='store_true')
+
+args = parser.parse_args()
+print args.w
+```
+
+**用法：**
+
+```sh
+python myparser.py -w
+>> True
+```
+
